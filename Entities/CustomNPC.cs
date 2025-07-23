@@ -269,11 +269,11 @@ public class CustomNPC : Actor
         base.Added(scene);
         StateMachine.State = (int)St.Idle;
         level = scene as Level;
-        deterministicRandom = new Random(level.Session.DeathsInCurrentLevel * 37 + ID * 13 + SaveData.Instance.Name.GetHashCode());
+        deterministicRandom = new Random(level.Session.Deaths * 37 + ID * 13 + SaveData.Instance.Name.GetHashCode());
         if (level.Session.GetFlag("CelesteTAS_TAS_Was_Run"))
         {
             // TAS info
-            Logger.Log(LogLevel.Info, "DoonvHelper", $"NPC RNG seed: Deaths: {level.Session.DeathsInCurrentLevel}, File: {SaveData.Instance.Name}, Entity: {ID}");
+            Logger.Log(LogLevel.Info, "DoonvHelper", $"NPC RNG seed: Deaths: {level.Session.Deaths}, File: {SaveData.Instance.Name}, Entity: {ID}");
         }
     }
     public override void Awake(Scene scene)
