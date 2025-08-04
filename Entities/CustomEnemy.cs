@@ -1,10 +1,11 @@
-using System.Collections;
 using Celeste.Mod.DoonvHelper.Utils;
 using Celeste.Mod.Entities;
 using Celeste.Mod.XaphanHelper.Entities;
 using Microsoft.Xna.Framework;
 using Monocle;
 using MonoMod.Utils;
+using System;
+using System.Collections;
 
 namespace Celeste.Mod.DoonvHelper.Entities;
 
@@ -47,9 +48,7 @@ public class CustomEnemy : CustomNPC
 			if (this.CollideCheck(player))
 			{
 				if (SafeTime < 0f)
-				{
-					player.Die((player.Center - this.Center).SafeNormalize());
-				}
+                    player.Die((player.Center - this.Center).SafeNormalize());
 				destroy();
 			}
 			if ((Scene as Level).IsInCamera(Position, 32f) == false) destroy();
@@ -174,7 +173,7 @@ public class CustomEnemy : CustomNPC
 	{
 		base.Update();
 		if (player is null || StateMachine.State == (int)St.Dummy || (WaitForMovement && player.JustRespawned)) return;
-		if (BulletRecharge > 0f)
+		if (BulletRecharge > 0f && CanSeePlayer(player))
 		{
 			BulletShootTimer -= Engine.DeltaTime;
 			if (BulletShootTimer < 0f)
@@ -270,7 +269,7 @@ public class CustomEnemy : CustomNPC
 			return true;
 		}
 		Health = newHealth;
-		InvincibilityFramesTimer = 0.5f;
+        InvincibilityFramesTimer = 0.5f;
 		return true;
 	}
 
@@ -287,12 +286,16 @@ public class CustomEnemy : CustomNPC
 				Input.Jump.ConsumePress();
 			}
 		}
-		else if (InvincibilityFramesTimer <= 0f) player.Die((player.Center - this.Center).SafeNormalize());
+		else if (InvincibilityFramesTimer <= 0f)
+		{
+            Collidable = false;
+            player.Die((player.Center - this.Center).SafeNormalize());
+		}
 	}
 
 	private void OnPlayerBounce(Player player)
 	{
-		if (this.Damage())
+        if (Collidable && this.Damage())
 		{
 			player.Jump();
 			player.RefillDash();

@@ -314,6 +314,7 @@ public class CustomNPC : Actor
     /// <summary>Kills (destroys) the NPC.</summary>
     public virtual void Kill()
     {
+        Collidable = false;
         if (Sprite.Has("gore") && Settings.Instance.DisableFlashes == false)
         {
             Sprite.Animation gores = Sprite.Animations["gore"];
