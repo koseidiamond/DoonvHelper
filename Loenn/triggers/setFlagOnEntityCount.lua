@@ -9,7 +9,7 @@ setFlagOnEntityCount.fieldInformation = {
         },
         editable = false
     },
-    check = {
+    checkOn = {
         options = {
             { "Always",   "Always" },
             { "On Enter", "OnEnter" },
@@ -29,6 +29,7 @@ setFlagOnEntityCount.placements = {
         operator = "EqualTo",
         count = 0,
         flag = "",
+        flagValue = true,
         checkOn = "OnEnter"
     }
 }

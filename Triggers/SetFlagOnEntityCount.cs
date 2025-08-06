@@ -27,6 +27,7 @@ public class SetFlagOnEntityCount : Trigger
 	public string Flag;
 	public Type TargetType;
 	public int TargetCount;
+	public bool flagValue;
 
 	public bool Condition
 	{
@@ -55,6 +56,7 @@ public class SetFlagOnEntityCount : Trigger
 			);
 		}
 		this.Flag = data.Attr("flag", "");
+		this.flagValue = data.Bool("flagValue", true);
 		this.TargetCount = data.Int("count", 0);
 		this.Operator = data.Enum<OperatorType>("operator", OperatorType.EqualTo);
 		this.TargetType = DoonvHelperModule.FrostHelperImports.EntityNameToType(data.Attr("entityIDs", ""));
@@ -70,8 +72,11 @@ public class SetFlagOnEntityCount : Trigger
 	private void checkAndSetFlag(CheckDuring check)
 	{
 		if (check != CheckOn || Condition == false) return;
-		session.SetFlag(Flag);
-	}
+		if (flagValue)
+			session.SetFlag(Flag);
+		else
+			session.SetFlag(Flag, false);
+    }
 
 	public override void Update()
 	{

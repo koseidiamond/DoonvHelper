@@ -290,6 +290,7 @@ public class CustomEnemy : CustomNPC
 		{
             Collidable = false;
             player.Die((player.Center - this.Center).SafeNormalize());
+            Collidable = true;
 		}
 	}
 

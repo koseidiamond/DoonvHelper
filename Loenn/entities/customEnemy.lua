@@ -1,6 +1,16 @@
 local customEnemy = require("utils").deepcopy(require("mods").requireFromPlugin("entities.customNPC", "DoonvHelper"))
 
 customEnemy.name = "DoonvHelper/CustomEnemy"
+
+customEnemy.fieldInformation = {
+    hitboxHeight = { minimumValue = 0.0, fieldType = "integer" },
+    hitboxWidth = { minimumValue = 0.0, fieldType = "integer" },
+    hitboxXOffset = { fieldType = "integer" },
+    hitboxYOffset = { fieldType = "integer" },
+    bounceboxXOffset = { fieldType = "integer" },
+    bounceboxYOffset = { fieldType = "integer" }
+}
+
 customEnemy.fieldOrder = {
     "x", "y",
     "XSpeed", "YSpeed",
@@ -8,9 +18,9 @@ customEnemy.fieldOrder = {
     "aiType", "spriteID",
     "hitboxWidth", "hitboxHeight",
     "hitboxXOffset", "hitboxYOffset",
-    "facing", "waitForMovement", "outlineEnabled",
     "bounceboxXOffset", "bounceboxYOffset",
     "bounceboxWidth", "bounceboxHeight",
+    "facing", "waitForMovement", "outlineEnabled",
     "bulletRecharge", "bulletSpeed",
     "bulletSafeTime", "bulletFacing",
     "bulletSpriteID",
@@ -20,8 +30,8 @@ for k, v in pairs({
     health = { fieldType = "integer", minimumValue = 0 },
     bulletRecharge = { minimumValue = 0.0 },
     bulletSafeTime = { minimumValue = 0.0 },
-    bounceboxHeight = { minimumValue = 0.0 },
-    bounceboxWidth = { minimumValue = 0.0 },
+    bounceboxHeight = { minimumValue = 0.0, fieldType = "integer" },
+    bounceboxWidth = { minimumValue = 0.0, fieldType = "integer" },
     bulletFacing = customEnemy.fieldInformation["facing"],
 }) do customEnemy.fieldInformation[k] = v end
 for k, v in pairs({

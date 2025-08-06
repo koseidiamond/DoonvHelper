@@ -25,8 +25,10 @@ customNPC.fieldInformation = {
         },
         editable = false,
     },
-    hitboxHeight = { minimumValue = 0.0 },
-    hitboxWidth = { minimumValue = 0.0 },
+    hitboxHeight = { minimumValue = 0.0, fieldType = "integer" },
+    hitboxWidth = { minimumValue = 0.0, fieldType = "integer" },
+    hitboxXOffset = { fieldType = "integer" },
+    hitboxYOffset = { fieldType = "integer" }
 }
 customNPC.fieldOrder = {
     "x", "y",
