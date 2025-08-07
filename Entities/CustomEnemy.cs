@@ -77,6 +77,9 @@ public class CustomEnemy : CustomNPC
 	public bool aboutToShoot;
 
 	private bool xaphanHelperCompat;
+	private bool frozen;
+	private float frozenTimer;
+	private Vector2 originalSpeed;
 
 	public CustomEnemy(EntityData data, Vector2 offset) : this(
 		data.NodesWithPosition(offset),
@@ -167,12 +170,27 @@ public class CustomEnemy : CustomNPC
 	{
 		base.Awake(scene);
 		player = scene.Tracker.GetEntity<Player>();
+		originalSpeed = Speed;
 	}
 
 	public override void Update()
 	{
 		base.Update();
-		if (player is null || StateMachine.State == (int)St.Dummy || (WaitForMovement && player.JustRespawned)) return;
+        if (frozen)
+        {
+            Velocity = Vector2.Zero; // makes sure gravity etc doesn't move the enemy
+			Speed = Vector2.Zero; // stops movement while frozen
+            Sprite.Color = Color.LightBlue;
+            frozenTimer -= Engine.DeltaTime;
+            if (frozenTimer <= 0f)
+            {
+                frozen = false;
+				Speed = originalSpeed;
+                Sprite.Color = Color.White;
+            }
+            return;
+        }
+        if (player is null || StateMachine.State == (int)St.Dummy || (WaitForMovement && player.JustRespawned)) return;
 		if (BulletRecharge > 0f && CanSeePlayer(player))
 		{
 			BulletShootTimer -= Engine.DeltaTime;
@@ -206,7 +224,13 @@ public class CustomEnemy : CustomNPC
 					Damage(2);
 				else
 					Damage(1);
-			}
+				if (beam.beamType.Contains("PlasmaIce") || beam.beamType.Contains("SpazerIce") || beam.beamType.Contains("WaveIce") || beam.beamType.Contains("Ice"))
+				{
+					frozen = true;
+					frozenTimer = 3f;
+				}
+
+            }
 			if ((bomb = CollideFirst<Bomb>()) != null)
 			{
 				bomb.explode = true;
