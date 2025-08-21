@@ -28,6 +28,7 @@ public class ComfySpot : Trigger
 		if (!comfdata.Contains(entityID))
 		{
 			comfdata.Add(entityID);
+			(Scene as Level).Session.IncrementCounter("DoonvHelper_ComfySpots");
 			(Scene as Level).Add(new SummitCheckpoint.ConfettiRenderer(player.Position));
 		}
 
