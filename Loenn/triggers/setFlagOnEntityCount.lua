@@ -30,7 +30,8 @@ setFlagOnEntityCount.placements = {
         count = 0,
         flag = "",
         flagValue = true,
-        checkOn = "OnEnter"
+        checkOn = "OnEnter",
+		entityInsideTrigger = false
     }
 }
 

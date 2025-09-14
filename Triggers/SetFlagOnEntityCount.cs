@@ -28,13 +28,23 @@ public class SetFlagOnEntityCount : Trigger
 	public Type TargetType;
 	public int TargetCount;
 	public bool flagValue;
+	public bool entityInsideTrigger;
 
 	public bool Condition
 	{
 		get
 		{
-			int count = Scene.Entities.Count((Entity entity) => entity.GetType() == TargetType);
-			switch (Operator)
+            int count = 0;
+
+            foreach (Entity entity in Scene.Entities)
+            {
+                if (entity.GetType() == TargetType)
+                {
+                    if (!entityInsideTrigger || Collider.Collide(entity))
+                        count++;
+                }
+            }
+            switch (Operator)
 			{
 				case OperatorType.EqualTo: return count == TargetCount;
 				case OperatorType.GreaterThan: return count > TargetCount;
@@ -58,6 +68,7 @@ public class SetFlagOnEntityCount : Trigger
 		this.Flag = data.Attr("flag", "");
 		this.flagValue = data.Bool("flagValue", true);
 		this.TargetCount = data.Int("count", 0);
+		this.entityInsideTrigger = data.Bool("entityInsideTrigger", false);
 		this.Operator = data.Enum<OperatorType>("operator", OperatorType.EqualTo);
 		this.TargetType = DoonvHelperModule.FrostHelperImports.EntityNameToType(data.Attr("entityIDs", ""));
 		this.CheckOn = data.Enum<CheckDuring>("checkOn", CheckDuring.OnEnter);
