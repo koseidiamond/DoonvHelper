@@ -315,7 +315,7 @@ public class CustomNPC : Actor
     public virtual void Kill()
     {
         Collidable = false;
-        if (Sprite.Has("gore") && Settings.Instance.DisableFlashes == false)
+        if (Sprite.Has("gore") && !DoonvHelperModule.Settings.Gore)
         {
             Sprite.Animation gores = Sprite.Animations["gore"];
             for (int i = 0; i < gores.Frames.Length; i++)

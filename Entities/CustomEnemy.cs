@@ -114,7 +114,7 @@ public class CustomEnemy : CustomNPC
 		data.Bool("dashable", false),
 		data.Enum<FacingAt>("bulletFacing", FacingAt.None),
 		data.Bool("xaphanHelperCompat", false)
-	)
+    )
 	{
 	}
 
