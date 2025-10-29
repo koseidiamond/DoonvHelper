@@ -24,7 +24,7 @@ public class SetFlagOnEntityCount : Trigger
 	}
 	public OperatorType Operator;
 	public CheckDuring CheckOn;
-	public string Flag;
+	public string Flag, Counter;
 	public Type TargetType;
 	public int TargetCount;
 	public bool flagValue;
@@ -72,6 +72,7 @@ public class SetFlagOnEntityCount : Trigger
 		this.Operator = data.Enum<OperatorType>("operator", OperatorType.EqualTo);
 		this.TargetType = DoonvHelperModule.FrostHelperImports.EntityNameToType(data.Attr("entityIDs", ""));
 		this.CheckOn = data.Enum<CheckDuring>("checkOn", CheckDuring.OnEnter);
+		this.Counter = data.Attr("counter", "");
 	}
 
 	public override void Added(Scene scene)
@@ -82,7 +83,15 @@ public class SetFlagOnEntityCount : Trigger
 
 	private void checkAndSetFlag(CheckDuring check)
 	{
-		if (check != CheckOn || Condition == false) return;
+        if (!string.IsNullOrEmpty(Counter))
+        {
+            int count = 0;
+            foreach (Entity e in Scene.Entities)
+                if (e.GetType() == TargetType && (!entityInsideTrigger || Collider.Collide(e)))
+                    count++;
+            session.SetCounter(Counter, count);
+        }
+        if (check != CheckOn || Condition == false) return;
 		if (flagValue)
 			session.SetFlag(Flag);
 		else

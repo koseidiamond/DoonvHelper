@@ -29,6 +29,7 @@ setFlagOnEntityCount.placements = {
         operator = "EqualTo",
         count = 0,
         flag = "",
+		counter = "",
         flagValue = true,
         checkOn = "OnEnter",
 		entityInsideTrigger = false

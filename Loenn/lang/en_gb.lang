@@ -126,6 +126,7 @@ triggers.DoonvHelper/SetFlagOnEntityCount.attributes.description.entityIDs=The f
 triggers.DoonvHelper/SetFlagOnEntityCount.attributes.description.operator=Whether the amount of entities should be more, less, or equal than the count field.
 triggers.DoonvHelper/SetFlagOnEntityCount.attributes.description.count=How many.
 triggers.DoonvHelper/SetFlagOnEntityCount.attributes.description.flag=The flag that will be set (or unset) when the condition is met.
+triggers.DoonvHelper/SetFlagOnEntityCount.attributes.description.counter=The session counter that will be track the amount of the specified entity, regardless of the condition.
 triggers.DoonvHelper/SetFlagOnEntityCount.attributes.description.flagValue=Whether the flag should be set to true or false.
 triggers.DoonvHelper/SetFlagOnEntityCount.attributes.description.checkOn=Whether the condition should be checked while the player is inside the trigger, when they enter, exit, or always.
 triggers.DoonvHelper/SetFlagOnEntityCount.attributes.description.entityInsideTrigger=Whether the trigger should only count entities that are partially or fully inside the trigger.
