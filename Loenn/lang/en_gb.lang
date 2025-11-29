@@ -54,9 +54,9 @@ entities.DoonvHelper/CustomIntroCar.attributes.description.disappearanceType=Cho
 entities.DoonvHelper/CustomIntroCar.attributes.description.persistenceFlag=If a flag name (any string really) is entered, that flag will be activated upon disappearance 
 
 # comf
-entities.DoonvHelper/ComfySpot.placements.name.normal=Comfy Spot
-entities.DoonvHelper/ComfySpot.placements.description.normal=A very comf spot indeed.\nAdding this to your map will add a comf counter to it, which allows your players to track all the comfs in your map!
-entities.DoonvHelper/ComfySpot.attributes.description.comfLevel=The amount of comf points this spot will give upon being entered.
+triggers.DoonvHelper/ComfySpot.placements.name.normal=Comfy Spot
+triggers.DoonvHelper/ComfySpot.placements.description.normal=A very comf spot indeed.\nAdding this to your map will add a comf counter to it, which allows your players to track all the comfs in your map!
+triggers.DoonvHelper/ComfySpot.attributes.description.comfLevel=The amount of comf points this spot will give upon being entered.
 
 # The mightiest door ever made
 entities.DoonvHelper/ComfDoor.placements.name.normal=Almighty Mighty Comf Door

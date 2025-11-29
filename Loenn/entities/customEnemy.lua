@@ -8,7 +8,21 @@ customEnemy.fieldInformation = {
     hitboxXOffset = { fieldType = "integer" },
     hitboxYOffset = { fieldType = "integer" },
     bounceboxXOffset = { fieldType = "integer" },
-    bounceboxYOffset = { fieldType = "integer" }
+    bounceboxYOffset = { fieldType = "integer" },
+	aiType = {
+        options = {
+            { "Swim",         "Swim" },
+            { "Fly",          "Fly" },
+            { "Fly (Tied)",   "FlyTied" },
+            { "Smart Fly",    "SmartFly" },
+            { "Node Walk",    "NodeWalk" },
+            { "Chase Walk",   "ChaseWalk" },
+            { "Wander",       "Wander" },
+            { "Walk & Climb", "WalkNClimb" },
+            { "Chase Jump",   "ChaseJump" },
+        },
+        editable = false,
+    }
 }
 
 customEnemy.fieldOrder = {

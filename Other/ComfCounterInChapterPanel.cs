@@ -73,7 +73,7 @@ internal class ComfCounterInChapterPanel
 	/// </summary>
 	private void ModOuiChapterPanelConstructor(On.Celeste.OuiChapterPanel.orig_ctor orig, OuiChapterPanel panel)
 	{
-		Logger.Log(LogLevel.Info, "DoonvHelper", "Constructor.");
+		//Logger.Log(LogLevel.Info, "DoonvHelper", "Constructor.");
 		orig(panel);
 		// Logger.Log(LogLevel.Info, "DoonvHelper ModOuiChapterPanelConstructor", DoonvHelperModule.ComfLevelTotals.SafeGet(new LevelSideID(panel.Area)).ToString());
 		// Logger.Log(LogLevel.Info, "DoonvHelper ModOuiChapterPanelConstructor", panel.Area.GetSID().ToString());
