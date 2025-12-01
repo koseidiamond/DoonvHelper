@@ -26,10 +26,10 @@ internal class ComfCounterInChapterPanel
 		On.Celeste.OuiChapterPanel.GetModeHeight += ModOuiChapterPanelGetModeHeight; // See the function comment
 	}
 
-	private void TestReset(On.Celeste.OuiChapterPanel.orig_Reset orig, OuiChapterPanel self)
+	private static void TestReset(On.Celeste.OuiChapterPanel.orig_Reset orig, OuiChapterPanel self)
 	{
 		orig(self);
-		Logger.Log(LogLevel.Info, "DoonvHelper", "Reset.");
+		Logger.Log(LogLevel.Info, "DoonvHelper", "Reset Comf.");
 	}
 
 	/// <summary>
@@ -47,7 +47,7 @@ internal class ComfCounterInChapterPanel
 		On.Celeste.OuiChapterPanel.GetModeHeight -= ModOuiChapterPanelGetModeHeight;
 	}
 
-	private void ModSessionCreate(
+	private static void ModSessionCreate(
 		On.Celeste.Session.orig_ctor_AreaKey_string_AreaStats orig,
 		Session self,
 		AreaKey area,
@@ -248,7 +248,8 @@ internal class ComfCounterInChapterPanel
 	{
 
 		bool modeStatsWasCompleted = modeStats.Completed; // We store this because it will get set to true in the original method.
-		yield return orig(panel, modeStats, newModeStats, doHeartGem, doStrawberries, doDeaths, doRemixUnlock);
+		// todo SwapImmediately instead
+		yield return new SwapImmediately(orig(panel, modeStats, newModeStats, doHeartGem, doStrawberries, doDeaths, doRemixUnlock));
 
 		if (comfCounter is null) yield break;
 

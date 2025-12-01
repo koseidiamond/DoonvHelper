@@ -96,7 +96,7 @@ public class DoonvHelperModule : EverestModule
 	}
 
 	/// <summary> TODO: Remove this when Guneline 2 comes out  </summary>
-	private void modGunelineBulletCollisionCheck(Action<Bullet> orig, Guneline.Bullet bullet)
+	private static void modGunelineBulletCollisionCheck(Action<Bullet> orig, Guneline.Bullet bullet)
 	{
 		DynamicData bulletData = DynamicData.For(bullet);
 		CustomNPC enemy = bulletData.Get<Actor>("owner").Scene.CollideFirst<CustomNPC>(bullet.Hitbox);
@@ -124,7 +124,7 @@ public class DoonvHelperModule : EverestModule
 	/// <summary>
 	/// This is a hook that overrides the `Level.Begin` method.
 	/// </summary>
-	private void ModLevelBegin(On.Celeste.Level.orig_Begin orig, Level level)
+	private static void ModLevelBegin(On.Celeste.Level.orig_Begin orig, Level level)
 	{
 		orig(level); // Call original method that we have overriden so we maintain the original functionality.
 
