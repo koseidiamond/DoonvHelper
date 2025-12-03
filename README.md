@@ -4,18 +4,20 @@
 
 ## Features
 
-This isn't done yet.
+See the [GameBanana](https://gamebanana.com/mods/631638) description.
 
 ## Credits
 
 - Project Creator - Doonv
 - Ideas - Doonv
 - Programmer Lead - Doonv
-- Code Update - EllaTAS
+- Code Update - EllaTAS, Kosei
+- Code Maintenance - Kosei
 - Project Manager - Doonv
 - Testing Lead - Doonv
 - Testing - Doonv
 - Arrow Art for Dash Code Gate - mkboi27
+- HD Comf Icon - Spooooky
 - Emotional Support - Doonv
 - Writing of this - Doonv
-- Doonv's Oxygen - some tree in *brazil*
+- Doonv's Oxygen - some tree in *Brazil*
