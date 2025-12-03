@@ -19,5 +19,5 @@ See the [GameBanana](https://gamebanana.com/mods/631638) description.
 - Arrow Art for Dash Code Gate - mkboi27
 - HD Comf Icon - Spooooky
 - Emotional Support - Doonv
-- Writing of this - Doonv
+- Writing of this - Doonv (and Kosei)
 - Doonv's Oxygen - some tree in *Brazil*
