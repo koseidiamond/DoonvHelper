@@ -13,7 +13,7 @@
         },
         {
             "label": "release build",
-            "command": "dotnet build . -c Release;rm bin/DoonvHelper.pdb",
+            "command": "rm *.zip;rm bin/*;dotnet build . -c Release;rm bin/*.json",
             "type": "shell",
             "group": {
                 "kind": "build",

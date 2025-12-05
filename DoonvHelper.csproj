@@ -10,56 +10,27 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
         <OutputPath>bin</OutputPath>
+        <PathMap>$(MSBuildProjectDirectory)=DoonvHelper/</PathMap>
+        <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
     </PropertyGroup>
 
-    <!--Disable
-    "Copy Local" for all references-->
     <ItemDefinitionGroup>
         <PackageReference PrivateAssets="all" ExcludeAssets="runtime" />
         <Reference Private="false" />
     </ItemDefinitionGroup>
 
     <ItemGroup>
-        <PackageReference Include="MonoMod.RuntimeDetour" Version="25.2.3" PrivateAssets="all" ExcludeAssets="runtime">
-          <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        <PackageReference Include="MonoMod.RuntimeDetour" Version="25.3.1" />
         <PackageReference Include="MonoMod.Patcher" Version="25.0.0-prerelease.2" />
         <PackageReference Include="CelesteAnalyzer" Version="*" />
-        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="Celeste">
-          <HintPath>..\..\Celeste.dll</HintPath>
-        </Reference>
-        <Reference Include="FNA">
-          <HintPath>..\..\FNA.dll</HintPath>
-        </Reference>
-        <Reference Include="Guneline">
-            <HintPath>../Cache/Guneline.Guneline.dll</HintPath>
-        </Reference>
-        <Reference Include="LuaCutscenes">
-            <HintPath>../Cache/LuaCutscenes.LuaCutscenes.dll</HintPath>
-        </Reference>
-        <Reference Include="MMHOOK_Celeste">
-          <HintPath>..\..\MMHOOK_Celeste.dll</HintPath>
-        </Reference>
-        <Reference Include="XaphanHelper">
-            <HintPath>../Cache/XaphanHelper.XaphanHelper.dll</HintPath>
-        </Reference>
+        <Reference Include="Celeste" HintPath="$(CelestePrefix)\Celeste.dll" />
+        <Reference Include="FNA" HintPath="$(CelestePrefix)\FNA.dll" />
+        <Reference Include="MMHOOK_Celeste" HintPath="$(CelestePrefix)\MMHOOK_Celeste.dll" />
+        <Reference Include="Guneline" HintPath="$(CelestePrefix)\Mods\Cache\Guneline.Guneline.dll" />
+        <Reference Include="LuaCutscenes" HintPath="$(CelestePrefix)\Mods\Cache\LuaCutscenes.LuaCutscenes.dll" />
+        <Reference Include="XaphanHelper" HintPath="$(CelestePrefix)\Mods\Cache\XaphanHelper.XaphanHelper.dll" />
     </ItemGroup>
-
-    <Target Name="CopyFiles" AfterTargets="Build">
-        <Copy SourceFiles="$(OutputPath)\$(AssemblyName).dll" DestinationFolder="bin" />
-        <Copy SourceFiles="$(OutputPath)\$(AssemblyName).pdb" DestinationFolder="bin" />
-    </Target>
-
-    <PropertyGroup>
-        <PathMap>$(MSBuildProjectDirectory)=DoonvHelper/</PathMap>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
-    </PropertyGroup>
-
 </Project>
