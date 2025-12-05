@@ -34,7 +34,6 @@
                 "${workspaceFolder}/Dialog",
                 "${workspaceFolder}/Graphics",
                 "${workspaceFolder}/Loenn",
-                "${workspaceFolder}/Maps",
                 "${workspaceFolder}/everest.yaml",
                 "${workspaceFolder}/LICENSE.txt",
                 "${workspaceFolder}/README.md"
