@@ -269,7 +269,7 @@ public class CustomNPC : Actor
         base.Added(scene);
         StateMachine.State = (int)St.Idle;
         level = scene as Level;
-        deterministicRandom = new Random(level.Session.Deaths * 37 + ID * 13 + SaveData.Instance.Name.GetHashCode());
+        deterministicRandom = new Random(level.Session.Deaths * 37 + ID * 13);
         if (level.Session.GetFlag("CelesteTAS_TAS_Was_Run"))
         {
             // TAS info
