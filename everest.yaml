@@ -1,9 +1,9 @@
 - DLL: bin/DoonvHelper.dll
   Name: DoonvHelper
-  Version: 1.0.2
+  Version: 1.0.3
   Dependencies:
     - Name: Everest
-      Version: 1.5986.0
+      Version: 1.6064.0
     - Name: LuaCutscenes
       Version: 0.2.7
   OptionalDependencies:
